@@ -1,0 +1,24 @@
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[/src/**]
+end_of_line = lf
+insert_final_newline = true
+
+# set default charset
+[/src/**.{js,json,html,scss}]
+charset = utf-8
+
+# indentation
+[/src/**.{js,json,scss}]
+indent_style = space
+indent_size = 2
+
+# trailing whitespaces
+[/src/**]
+trim_trailing_whitespaces = true
+
+# final newline
+[/src/**]
+insert_final_newline = true
