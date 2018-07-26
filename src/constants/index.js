@@ -9,6 +9,7 @@ export const SCREEN_LOADER = 'SCREEN_LOADER';
 export const INIT = 'INIT';
 export const HOME = 'HOME';
 export const ERROR = 'ERROR';
+export const TEST = 'TEST';
 
 /* ----- Actions ----- */
 export const START = '_START';
@@ -17,3 +18,4 @@ export const SUCCESS = '_SUCCESS';
 export const FAIL = '_FAIL';
 export const SET = '_SET';
 export const CLEAR = '_CLEAR';
+export const CATEGORY = '_CATEGORY';

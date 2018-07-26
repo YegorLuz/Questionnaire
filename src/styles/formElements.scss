@@ -1,0 +1,57 @@
+@import './vars';
+
+@mixin button {
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid $border;
+  border-radius: 2px;
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+@mixin formElement {
+  width: 100%;
+  @include button();
+  padding: 0 12px;
+  color: $textColor;
+}
+
+.input,
+.selector {
+  @include formElement();
+}
+
+.selector {
+  cursor: pointer;
+}
+
+.button {
+  @include button();
+  display: block;
+  padding: 0 30px;
+  background-color: $successButton;
+  color: $white;
+  text-transform: uppercase;
+  margin: 10px 0 0 auto;
+  cursor: pointer;
+}
+
+.form-title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  width: 400px;
+  padding: 8px 0;
+  margin: 0 auto;
+
+  label {
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 30px;
+    color: $labelColor;
+  }
+}

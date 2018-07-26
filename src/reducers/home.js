@@ -1,7 +1,12 @@
 import { HOME, INIT, SUCCESS } from '../constants';
 
 const defaultState = {
-	data: [],
+	categories: [],
+	difficulty: [
+		{ id: 'easy', name: 'Easy' },
+		{ id: 'medium', name: 'Medium' },
+		{ id: 'hard', name: 'Hard' },
+	],
 };
 
 export default (state = defaultState, action) => {
@@ -11,7 +16,7 @@ export default (state = defaultState, action) => {
 		case INIT + SUCCESS: {
 			return {
 				...state,
-				data: payload.data,
+				categories: payload.data,
 			};
 		}
 		case HOME: {
