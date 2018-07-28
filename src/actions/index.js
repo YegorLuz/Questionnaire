@@ -1,5 +1,5 @@
-import { API_CATEGORY, API_PATH, INIT, SUCCESS, FAIL, TEST, CATEGORY } from '../constants';
-import { axiosInstance, CancelToken, isCanceled, getQueryString } from '../utils';
+import { API_CATEGORY, API_PATH, INIT, SUCCESS, FAIL, TEST, CATEGORY, ANSWER, REHYDRATE, CLEAR } from '../constants';
+import { axiosInstance, CancelToken, isCanceled, getQueryString, clearAllStorageData, setStorageData, getStorageData } from '../utils';
 import { setErrorData, clearErrorData, errorOnSuccess } from './error';
 import { start, end } from './screenLoader';
 
@@ -12,6 +12,8 @@ let cancelRequest = null;
 export function init() {
 	return async dispatch => {
 		dispatch(start());
+
+		clearAllStorageData();
 
 		const onSuccess = response => {
 			dispatch(clearErrorData());
@@ -58,9 +60,12 @@ export function getTestData(params, category = '') {
 					category,
 				},
 			});
+			setStorageData('category', category);
 
 			if (response.data && !response.data.response_code) {
 				dispatch(saveData(TEST, response.data.results));
+				setStorageData('data', response.data.results);
+				setStorageData('answers', []);
 			} else {
 				dispatch(errorOnSuccess(response.data));
 			}
@@ -125,5 +130,56 @@ function saveData (type, data = {}) {
 		payload: {
 			data,
 		},
+	};
+}
+
+/**
+ * Save answer in store and in Storage
+ * @param {bool} answer
+ * @returns {function(*, *)}
+ */
+export function saveAnswer(answer) {
+	return (dispatch, getState) => {
+		const state = getState();
+		setStorageData('answers', [ ...state.test.answers, answer ]);
+		dispatch({
+			type: ANSWER,
+			payload: {
+				answer,
+			},
+		});
+	};
+}
+
+/**
+ * Updates data from Storage
+ * @returns {function(*)}
+ */
+export function getProgress() {
+	return dispatch => {
+		const category = getStorageData('category') || '';
+		const data = getStorageData('data') || [];
+		const answers = getStorageData('answers') || [];
+		dispatch({
+			type: TEST + REHYDRATE,
+			payload: {
+				category,
+				data,
+				answers,
+			},
+		});
+	};
+}
+
+/**
+ * Clear all answers
+ * @returns {function(*)}
+ */
+export function clearAnswers() {
+	return dispatch => {
+		setStorageData('answers', []);
+		dispatch({
+			type: ANSWER + CLEAR,
+		});
 	};
 }

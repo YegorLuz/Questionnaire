@@ -5,9 +5,9 @@ class Selector extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.renderOptions = this.renderOptions.bind(this);
-		this.getDefaultOption = this.getDefaultOption.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.getDefaultOption = this.getDefaultOption.bind(this);
+		this.renderOptions = this.renderOptions.bind(this);
 	}
 
 	onChange(event) {

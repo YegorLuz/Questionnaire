@@ -11,15 +11,17 @@ export default (state = defaultState, action) => {
 		case ERROR + SET: {
 			return {
 				...state,
-				data: payload.data,
+				data: payload.error,
 			};
 		}
+
 		case ERROR + CLEAR: {
 			return {
 				...state,
 				data: {},
 			};
 		}
+
 		default: {
 			return state;
 		}

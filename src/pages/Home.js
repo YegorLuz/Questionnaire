@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Selector from '../components/Selector';
 import Input from '../components/Input';
 import '../styles/formElements.scss';
+import { home } from '../content';
 
 import { init, getTestData } from '../actions';
 
@@ -12,7 +13,7 @@ class Home extends React.Component {
 		super(props);
 
 		this.state = {
-			amount: '0',
+			amount: '10',
 			category: '0',
 			difficulty: '',
 		};
@@ -42,30 +43,31 @@ class Home extends React.Component {
 		const { categories, difficulty } = this.props;
 		return (
 			<div className="form">
-				<h1 className="form-title">Questions Selector</h1>
+				<h1 className="form-title">{home.title}</h1>
 				<div className="form-row">
-					<label htmlFor="f-amount">Number of Questions:</label>
+					<label htmlFor="f-amount">{home.form.number.label}</label>
 					<Input
 						type="number"
 						uid="amount"
 						placeholder="10"
+						value="10"
 						onChange={this.onSelectOption}
 					/>
 				</div>
 				<div className="form-row">
-					<label htmlFor="f-category">Select Category:</label>
+					<label htmlFor="f-category">{home.form.category.label}</label>
 					<Selector
 						uid="category"
-						defaultOptionName="Any Category"
+						defaultOptionName={home.form.category.defaultValue}
 						data={categories}
 						onSelect={this.onSelectOption}
 					/>
 				</div>
 				<div className="form-row">
-					<label htmlFor="f-difficulty">Select Difficulty:</label>
+					<label htmlFor="f-difficulty">{home.form.difficulty.label}</label>
 					<Selector
 						uid="difficulty"
-						defaultOptionName="Any Difficulty"
+						defaultOptionName={home.form.difficulty.defaultValue}
 						data={difficulty}
 						onSelect={this.onSelectOption}
 					/>
@@ -75,8 +77,9 @@ class Home extends React.Component {
 						className="button"
 						onClick={this.requestTest}
 					>
-						generate test
+						{home.button}
 					</button>
+					<div className="clear" />
 				</div>
 			</div>
 		);

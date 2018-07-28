@@ -19,9 +19,11 @@ export default (state = defaultState, action) => {
 				categories: payload.data,
 			};
 		}
+
 		case HOME: {
 			return state;
 		}
+
 		default: {
 			return state;
 		}

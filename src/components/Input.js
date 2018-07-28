@@ -6,15 +6,15 @@ class Input extends React.Component {
 		super(props);
 
 		this.state = {
-			value: '',
+			value: props.value,
 		};
 
 		this.value = '';
 		this.input = null;
 
+		this.onRef = this.onRef.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.receiveValue = this.receiveValue.bind(this);
-		this.onRef = this.onRef.bind(this);
 	}
 
 	componentDidMount() {
@@ -69,11 +69,13 @@ class Input extends React.Component {
 
 Input.defaultProps = {
 	type: 'text',
+	value: '',
 	placeholder: '',
 };
 
 Input.propTypes = {
 	type: PropTypes.string,
+	value: PropTypes.string,
 	uid: PropTypes.string.isRequired,
 	placeholder: PropTypes.string,
 	onChange: PropTypes.func.isRequired,

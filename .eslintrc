@@ -55,7 +55,7 @@
     "no-whitespace-before-property": "error",
     "indent": ["error", "tab", { "SwitchCase": 1 }],
     "semi": ["error", "always"],
-    "yoda": ["error", "always"],
+    "yoda": ["error", "never"],
     "curly": ["error", "all"],
     "quotes": ["error", "single"],
     "one-var": ["error", "never"],

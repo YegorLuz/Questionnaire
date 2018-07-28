@@ -29,29 +29,98 @@
   @include button();
   display: block;
   padding: 0 30px;
-  background-color: $successButton;
+  background-color: $success;
+  border: 0;
   color: $white;
   text-transform: uppercase;
-  margin: 10px 0 0 auto;
+  margin: 10px 0 0 10px;
   cursor: pointer;
+  float: right;
+  box-shadow: -1px 1px 7px rgba(0,0,0,0.3);
+
+  &.info {
+    background-color: $info;
+  }
+}
+
+.form {
+  position: relative;
 }
 
 .form-title {
   width: 100%;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
-.form-row {
+.form-row,
+.question-row {
   width: 400px;
   padding: 8px 0;
   margin: 0 auto;
 
-  label {
+  label,
+  p {
     width: 100%;
     font-size: 18px;
     font-weight: bold;
     line-height: 30px;
     color: $labelColor;
+  }
+}
+
+.question-row {
+  width: 800px;
+  border-bottom: 1px solid $border;
+  padding: 15px;
+
+  form {
+    label {
+      padding-left: 12px;
+    }
+    input {
+      margin-right: 8px;
+    }
+  }
+}
+
+.message {
+  position: absolute;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid $white;
+  z-index: 10;
+  border-radius: 30px;
+  box-shadow: -2px 3px 10px rgba(36, 114, 0, 0.5);
+  line-height: 100px;
+  text-align: center;
+  color: $white;
+  opacity: 0;
+  transition: opacity 300ms linear;
+
+  &.-show {
+    opacity: 1;
+  }
+
+  &.success {
+    background-color: $success;
+  }
+
+  &.fail {
+    background-color: $fail;
+  }
+}
+
+.answer {
+  &.ok {
+    color: $success;
+  }
+  &.wrong {
+    color: $fail;
   }
 }

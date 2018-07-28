@@ -1,8 +1,9 @@
-import { TEST, SUCCESS, FAIL, CATEGORY } from '../constants';
+import { TEST, SUCCESS, FAIL, CATEGORY, ANSWER, REHYDRATE, CLEAR } from '../constants';
 
 const defaultState = {
 	data: [],
-	selectedCategory: '',
+	answers: [],
+	category: '',
 };
 
 export default (state = defaultState, action) => {
@@ -15,18 +16,45 @@ export default (state = defaultState, action) => {
 				data: [ ...payload.data ],
 			};
 		}
+
 		case TEST + FAIL: {
 			return {
 				...state,
 				data: [],
 			};
 		}
+
 		case TEST + CATEGORY: {
 			return {
 				...state,
-				selectedCategory: payload.category,
+				category: payload.category,
 			};
 		}
+
+		case ANSWER: {
+			return {
+				...state,
+				answers: [
+					...state.answers,
+					payload.answer,
+				],
+			};
+		}
+
+		case TEST + REHYDRATE: {
+			return {
+				...state,
+				...payload,
+			};
+		}
+
+		case ANSWER + CLEAR: {
+			return {
+				...state,
+				answers: [],
+			};
+		}
+
 		default: {
 			return state;
 		}

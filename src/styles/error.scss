@@ -1,0 +1,29 @@
+@import './vars';
+
+.error {
+  width: 800px;
+  padding: 8px 0;
+  margin: 0 auto;
+
+  .title,
+  &-message {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    color: $textColor;
+  }
+
+  &-message {
+    font-size: 18px;
+  }
+
+  .home-link {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    .link {
+      color: $success;
+    }
+  }
+}

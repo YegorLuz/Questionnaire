@@ -14,12 +14,14 @@ export default (state = defaultState, action) => {
 				loading: true,
 			};
 		}
+
 		case SCREEN_LOADER + END: {
 			return {
 				...state,
 				loading: false,
 			};
 		}
+
 		default: {
 			return state;
 		}

@@ -19,6 +19,8 @@ export default (
 			<Switch>
 				<Route path={'/'} exact component={LoadableComponent('Home')} />
 				<Route path={'/test'} exact component={LoadableComponent('Test')} />
+				<Route path={'/test-results'} exact component={LoadableComponent('TestResults')} />
+				<Route path={'/error'} exact component={LoadableComponent('Error')} />
 				<Route component={LoadableComponent('PageNotFound')} />
 			</Switch>
 		</AppContainer>
