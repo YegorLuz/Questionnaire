@@ -48,6 +48,12 @@ export default (state = defaultState, action) => {
 			};
 		}
 
+		case TEST + CLEAR: {
+			return {
+				...defaultState,
+			};
+		}
+
 		case ANSWER + CLEAR: {
 			return {
 				...state,

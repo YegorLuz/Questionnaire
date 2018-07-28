@@ -14,6 +14,9 @@ export function init() {
 		dispatch(start());
 
 		clearAllStorageData();
+		dispatch({
+			type: TEST + CLEAR,
+		});
 
 		const onSuccess = response => {
 			dispatch(clearErrorData());

@@ -29,9 +29,11 @@ class Test extends React.Component {
 	onSelectOption(passed) {
 		const { data, answers, history } = this.props;
 		this.props.saveAnswer(passed);
-		this.setState({
-			showMessage: true,
-		});
+		if (data.length > answers.length + 1) {
+			this.setState({
+				showMessage: true,
+			});
+		}
 
 		if (data.length === answers.length + 1) {
 			history.push('test-results');

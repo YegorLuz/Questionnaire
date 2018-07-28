@@ -23,8 +23,10 @@ class Question extends React.Component {
 	onSubmit() {
 		const { data } = this.props;
 		const { value } = this.state;
-		const passed = value === data.correct_answer;
-		this.props.onResult(passed);
+		if (!!value) {
+			const passed = value === data.correct_answer;
+			this.props.onResult(passed);
+		}
 	}
 
 	render() {
